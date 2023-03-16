@@ -17,7 +17,7 @@ steps:
   - aws s3 cp /drone/src/webapp/target/webapp.war s3://your-bucket.drone
   
 # build docker image from previous artificat
-- name: publish  
+- name: docker Build & Publish  
   image: plugins/docker
   settings:
     username:
