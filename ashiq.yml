@@ -14,6 +14,7 @@ steps:
   commands:
   - mvn package
 
+#push to s3
 - name: upload
   image: plugins/s3
   settings:
