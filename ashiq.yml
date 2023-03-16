@@ -18,6 +18,6 @@ steps:
   commands:
   - mvn package
 volumes:
-- name: maven-volumr
+- name: maven-volume
   host:
     path: /ashiq
