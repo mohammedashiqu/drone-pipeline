@@ -29,3 +29,15 @@ steps:
     - latest
     - ${DRONE_BUILD_NUMBER}
 
+- name: deploy-to-ecs
+  image: plugins/ecs
+  settings:
+    access_key:
+      from_secret: aws_access_key_id
+    secret_key:
+      from_secret: aws_secret_access_key
+    region: us-east-1
+    cluster: my-cluster
+    service: my-app-service
+    task_definition: my-app-task-def
+    image: ashiqummathoor/webapp:${DRONE_BUILD_NUMBER}
