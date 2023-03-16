@@ -11,23 +11,12 @@ steps:
 
 - name: build
   image: maven:3.6.3-openjdk-11
+  volumes:
+  - name: maven-volume
+    path: /drone/src/webapp/target
   commands:
   - mvn package
-
-#push to s3
-- name: upload
-  image: plugins/s3
-  settings:
-    bucket: your-bucket.drone
-    access_key:
-      from_secret: AKIA2JVG23TS2XFDMIRI
-    secret_key:
-      from_secret: o6GkS+HfHwA/udkkj95j2WYaJs1W1tIfS8oPdJR4
-    region: us-east-1
-  environment:
-    source: /drone/src/webapp/target/webapp.war
-    target: /webapp.war
-  when:
-    event:
-    - push
-    - pull_request
+volumes:
+- name: maven-volumr
+  host:
+    path: /ashiq
