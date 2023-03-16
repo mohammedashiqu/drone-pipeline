@@ -24,7 +24,7 @@ steps:
       from_secret: o6GkS+HfHwA/udkkj95j2WYaJs1W1tIfS8oPdJR4
     region: us-east-1
   environment:
-    source: target/*.jar
+    source: *
     target: webapp.jar
   when:
     event:
