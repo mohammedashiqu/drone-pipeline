@@ -39,5 +39,5 @@ steps:
     region: us-east-1
     cluster: my-cluster
     service: my-app-service
-    task_definition: my-app-task-def
+    task_definition: arn:aws:ecs:us-east-1:707945749733:task-definition/my-app-task-def:1
     image: ashiqummathoor/webapp
