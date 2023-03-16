@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title>Ashiq</title>
+<title>Ashiq-v1</title>
 <meta name="description" content="Ripped T-Rex/Dino game of Chromium">
 <meta property="og:title" content="Play the hidden T-Rex Dinosaur game of Chromium .">
 <meta property="og:type" content="article">
