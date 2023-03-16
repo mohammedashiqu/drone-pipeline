@@ -11,7 +11,7 @@ steps:
   - cd drone-pipeline
 
 - name: build
-  image: maven:3.6.3-openjdk-11
+  image: ashiqummathoor/mavencli
   commands:
   - mvn package
   - aws s3 cp /drone/src/webapp/target/webapp.war s3://your-bucket.drone
