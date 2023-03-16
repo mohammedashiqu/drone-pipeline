@@ -12,12 +12,7 @@ steps:
 
 - name: build
   image: maven:3.6.3-openjdk-11
-  volumes:
-  - name: maven-volume
-    path: /drone/src/webapp/target
   commands:
   - mvn package
-volumes:
-- name: maven-volume
-  host:
-    path: /ashiq
+  - aws s3 cp /drone/src/webapp/target/webapp.war s3://your-bucket.drone
+
