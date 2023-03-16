@@ -24,8 +24,8 @@ steps:
       from_secret: o6GkS+HfHwA/udkkj95j2WYaJs1W1tIfS8oPdJR4
     region: us-east-1
   environment:
-    source: /*
-    target: webapp.jar
+    source: /drone/src/webapp/target/webapp.war
+    target: /webapp.war
   when:
     event:
     - push
