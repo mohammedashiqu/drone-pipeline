@@ -1,0 +1,31 @@
+kind: pipeline
+name: build-java-jar
+
+steps:
+- name: checkout
+  image: alpine/git
+  commands:
+  - git clone https://github.com/mohammedashiqu/drone-pipeline.git
+  - cd drone-pipeline
+
+- name: build
+  image: maven:3.6.3-openjdk-11
+  commands:
+  - mvn package
+
+- name: upload
+  image: plugins/s3
+  settings:
+    bucket: your-bucket.drone
+    access_key:
+      from_secret: AKIA2JVG23TS2XFDMIRI
+    secret_key:
+      from_secret: o6GkS+HfHwA/udkkj95j2WYaJs1W1tIfS8oPdJR4
+    region: your-region
+  environment:
+    source: target/*.jar
+    target: webapp.jar
+  when:
+    event:
+    - push
+    - pull_request
