@@ -28,14 +28,6 @@ steps:
     tags:
     - latest
     - ${DRONE_BUILD_NUMBER}
-    
-- name: push image to ECR
-  image: ashiqummathoor/awscli:1
-  commands:
-  - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 707945749733.dkr.ecr.us-east-1.amazonaws.com
-  - docker pull ashiqummathoor/webapp
-  - docker tag ashiqummathoor/webapp 707945749733.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
-  - docker push 707945749733.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
 
 - name: deploy-to-ecs
   image: plugins/ecs
@@ -48,4 +40,4 @@ steps:
     cluster: my-cluster
     service: my-app-service
     task_definition: arn:aws:ecs:us-east-1:707945749733:task-definition/my-app-task-def:1
-    image: 707945749733.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
+    image: docker.io/ashiqummathoor/awscli
