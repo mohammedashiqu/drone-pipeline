@@ -33,9 +33,9 @@ steps:
   image: plugins/ecs
   settings:
     access_key:
-      from_secret: aws_access_key_id
-    secret_key:
-      from_secret: aws_secret_access_key
+      from_secret: 
+    secret_key: AKIA2JVG23TS2XFDMIRI
+      from_secret: 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
     region: us-east-1
     cluster: my-cluster
     service: my-app-service
