@@ -16,7 +16,7 @@ steps:
   - mvn package
   - aws s3 cp /drone/src/webapp/target/webapp.war s3://your-bucket.drone
   
-# build docker image from previous artificats
+# build docker image from previous artificat
 - name: publish  
   image: plugins/docker
   settings:
