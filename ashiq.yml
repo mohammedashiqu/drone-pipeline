@@ -15,4 +15,17 @@ steps:
   commands:
   - mvn package
   - aws s3 cp /drone/src/webapp/target/webapp.wa s3://your-bucket.drone
+  
+# build docker image from previous artificat
+- name: publish  
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: ashiqummathoor/webapp
+    tags:
+    - latest
+    - ${DRONE_BUILD_NUMBER}
 
