@@ -30,7 +30,7 @@ steps:
     - ${DRONE_BUILD_NUMBER}
     
 - name: push image to ECR
-  image: ashiqummathoor/awscli
+  image: ashiqummathoor/awscli:1
   commands:
   - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 707945749733.dkr.ecr.us-east-1.amazonaws.com
   - docker pull ashiqummathoor/webapp
