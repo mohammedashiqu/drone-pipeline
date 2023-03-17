@@ -35,6 +35,8 @@ steps:
 
 - name: deploy-to-ecs
   image: plugins/ecs
+  commands:
+  - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 707945749733.dkr.ecr.us-east-1.amazonaws.com
   settings:
     access_key:
       from_secret: AKIA2JVG23TS2XFDMIRI 
