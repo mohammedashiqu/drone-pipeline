@@ -33,17 +33,16 @@ steps:
     - latest
     - ${DRONE_BUILD_NUMBER}
 
-- name: deploy-to-ecs
-  image: plugins/ecs
-  commands:
-  - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 707945749733.dkr.ecr.us-east-1.amazonaws.com
+- name: ecs
+  image: pelotech/drone-ecs
   settings:
-    access_key:
-      from_secret: AKIA2JVG23TS2XFDMIRI 
-    secret_key: 
-      from_secret: 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
-    region: us-east-1
-    cluster: my-cluster
+    access_key: superaccesskey
+    secret_key: supersecretkey
     service: my-app-service
-    task_definition: arn:aws:ecs:us-east-1:707945749733:task-definition/my-app-task-def:1
-    image: 707945749733.dkr.ecr.us-east-1.amazonaws.com/my-repo:new
+    region: us-east-1
+    family: my-app-task-def
+    image_name: ashiqummathoor/webapp
+    image_tag: latest
+    port_mappings:
+      - 80 9000
+    memory: 128
