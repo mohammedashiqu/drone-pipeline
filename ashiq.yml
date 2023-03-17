@@ -1,8 +1,8 @@
 kind: pipeline
+type: docker
 name: build-java-jar
 
-#
-#steps-v1
+#checkout from git hub
 steps:
 - name: checkout
   image: alpine/git
@@ -10,11 +10,13 @@ steps:
   - git clone https://github.com/mohammedashiqu/drone-pipeline.git
   - cd drone-pipeline
 
+# compile and build java
 - name: build
   image: ashiqummathoor/mavencli
   commands:
   - mvn package
   
+# upload to s3 bucket
 - name: upload to s3
   image: ashiqummathoor/awscli
   commands:
@@ -32,17 +34,3 @@ steps:
     tags:
     - latest
     - ${DRONE_BUILD_NUMBER}
-
-- name: ecs
-  image: pelotech/drone-ecs
-  settings:
-    access_key: AKIA2JVG23TS2XFDMIRI
-    secret_key: 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
-    service: my-app-service
-    region: us-east-1
-    family: my-app-task-def
-    image_name: ashiqummathoor/webapp
-    image_tag: latest
-    port_mappings:
-      - 80 9000
-    memory: 128
