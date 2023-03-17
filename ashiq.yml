@@ -14,6 +14,10 @@ steps:
   image: ashiqummathoor/mavencli
   commands:
   - mvn package
+  
+- name: upload to s3
+  image: ashiqummathoor/awscli
+  commands:
   - aws s3 cp /drone/src/webapp/target/webapp.war s3://your-bucket.drone
   
 # build docker image from previous artificat
@@ -40,4 +44,4 @@ steps:
     cluster: my-cluster
     service: my-app-service
     task_definition: arn:aws:ecs:us-east-1:707945749733:task-definition/my-app-task-def:1
-    image: docker.io/ashiqummathoor/awscli
+    image: 707945749733.dkr.ecr.us-east-1.amazonaws.com/my-repo:new
