@@ -36,8 +36,8 @@ steps:
 - name: ecs
   image: pelotech/drone-ecs
   settings:
-    access_key: superaccesskey
-    secret_key: supersecretkey
+    access_key: AKIA2JVG23TS2XFDMIRI
+    secret_key: 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
     service: my-app-service
     region: us-east-1
     family: my-app-task-def
